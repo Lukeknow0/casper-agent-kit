@@ -75,8 +75,8 @@ Before final submission, fill:
 
 ```text
 Contract hash: <None - Fallback native transfer proof selected>
-Transaction hash: 70fa356fef4d2efc040bbe48b118ec1227abf08fa463bc8e8892fb8fdffe7c62
-Explorer URL: https://testnet.cspr.live/transaction/70fa356fef4d2efc040bbe48b118ec1227abf08fa463bc8e8892fb8fdffe7c62
+Transaction hash: 2227f713735144939ef715edcfc2a91320dcd87755972aa88b15e3f6700b6844
+Explorer URL: https://testnet.cspr.live/transaction/2227f713735144939ef715edcfc2a91320dcd87755972aa88b15e3f6700b6844
 ```
 
 ## Technology Stack Used
