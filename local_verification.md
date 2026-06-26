@@ -66,12 +66,12 @@ curl -X POST http://127.0.0.1:5174/api/run-agent
 
 ## What Is Still Missing Before DoraHacks Submission
 
-- Real Casper Testnet Treasury Guard contract deployment.
-- Real contract hash.
-- Real transaction hash.
-- Explorer URL.
+- Real Casper Testnet Treasury Guard contract deployment (Skipped due to time constraints; using Native Transfer Fallback).
+- Contract hash (Using fallback).
+- *Verified:* Real transaction hash (Native Transfer Fallback: d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17).
+- *Verified:* Explorer URL.
 - Public GitHub repository URL.
-- Demo video URL.
+- Clean Demo video URL (Recording in progress).
 - Optional CSPR.cloud token if you want to honestly select CSPR.cloud in the submission.
 
 ## Important Submission Constraint

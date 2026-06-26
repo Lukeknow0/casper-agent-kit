@@ -67,16 +67,19 @@ Current local implementation:
 
 - MCP server written in TypeScript.
 - Casper JSON-RPC client for live Testnet reads.
-- Treasury Guard policy engine and action executor adapter.
+- Treasury Guard agent that evaluates scenarios via LLM (e.g. OpenAI/Gemini) with a deterministic rule-engine fallback.
 - Dry-run receipt mode for safe local verification.
-- Contract API sketch for the on-chain Treasury Guard proof component.
+- Contract API sketch for the on-chain Treasury Guard component.
+
+> **Honesty Declaration on Smart Contract:**
+> Due to time constraints in this buildathon, we did not deploy a live Odra smart contract to Casper Testnet. Instead, the `executor.ts` uses a **Native Transfer Fallback**: the agent proves its capability to prepare, sign, and submit a live Casper transaction by issuing a self-transfer on the Testnet when executing a policy decision.
 
 Before final submission, fill:
 
 ```text
-Contract hash: <None - Fallback native transfer proof selected>
-Transaction hash: 2227f713735144939ef715edcfc2a91320dcd87755972aa88b15e3f6700b6844
-Explorer URL: https://testnet.cspr.live/transaction/2227f713735144939ef715edcfc2a91320dcd87755972aa88b15e3f6700b6844
+Contract hash: <Not Deployed - Native Transfer Fallback Used>
+Transaction hash: d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17
+Explorer URL: https://testnet.cspr.live/transaction/d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17
 ```
 
 ## Technology Stack Used

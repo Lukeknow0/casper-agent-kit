@@ -112,7 +112,7 @@ server.registerTool(
         contractHash: config.treasuryContractHash ?? "not-deployed-yet",
       },
     );
-    const receipt = prepareGuardAction(
+    const receipt = await prepareGuardAction(
       config,
       typedScenario,
       decision,
