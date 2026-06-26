@@ -1,0 +1,38 @@
+{
+  "name": "casper-agent-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP-native toolkit for building autonomous Casper agents, with a Treasury Guard demo.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit",
+    "dev:mcp": "tsx src/mcp/server.ts",
+    "demo:agent": "tsx src/agent/treasury-guard.ts",
+    "dashboard": "tsx src/dashboard/server.ts",
+    "dashboard:vite": "vite --host 127.0.0.1 dashboard",
+    "keys:generate": "tsx scripts/generate-keys.ts",
+    "keys:balance": "tsx scripts/check-balance.ts",
+    "demo:transfer": "tsx scripts/send-transfer.ts"
+  },
+  "keywords": [
+    "casper",
+    "mcp",
+    "agentic-ai",
+    "treasury",
+    "dorahacks"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "casper-js-sdk": "^5.0.12",
+    "dotenv": "^16.4.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.0.0"
+  }
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CasperAgentKit Treasury Guard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="header">
+        <div>
+          <p class="eyebrow">CasperAgentKit</p>
+          <h1>MCP-native Treasury Guard Agent</h1>
+        </div>
+        <div class="header-actions">
+          <button id="run-agent" type="button">Run Agent</button>
+          <div class="status">
+            <span class="dot"></span>
+            <span id="run-status">Latest receipt</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel span-2">
+          <div class="panel-title">Agent Loop</div>
+          <div class="timeline">
+            <div class="step" data-step="0">
+              <span>1</span>
+              <strong>Perceive</strong>
+              <p>Read treasury state and latest Casper network status.</p>
+            </div>
+            <div class="step" data-step="1">
+              <span>2</span>
+              <strong>Decide</strong>
+              <p>Evaluate spend, reserves, counterparty, and risk threshold.</p>
+            </div>
+            <div class="step" data-step="2">
+              <span>3</span>
+              <strong>Prepare</strong>
+              <p>Build a Casper contract action through the MCP tool layer.</p>
+            </div>
+            <div class="step" data-step="3">
+              <span>4</span>
+              <strong>Verify</strong>
+              <p>Attach contract address and explorer-confirmed transaction hash.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">Current Scenario</div>
+          <dl id="scenario"></dl>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">Policy Decision</div>
+          <div id="decision" class="decision"></div>
+        </article>
+
+        <article class="panel span-2">
+          <div class="panel-title">Receipt Proof</div>
+          <div id="proof" class="proof-grid"></div>
+        </article>
+
+        <article class="panel span-2">
+          <div class="panel-title">MCP Tools</div>
+          <div class="tools">
+            <span>casper_get_node_status</span>
+            <span>casper_get_latest_block</span>
+            <span>casper_query_global_state</span>
+            <span>casper_get_account_balance</span>
+            <span>treasury_guard_evaluate_policy</span>
+            <span>treasury_guard_prepare_action</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">Proof Targets</div>
+          <ul class="proofs">
+            <li>Contract hash on Casper Testnet</li>
+            <li>Explorer-confirmed tx hash</li>
+            <li>Open-source MCP server</li>
+            <li>Reproducible CLI agent run</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

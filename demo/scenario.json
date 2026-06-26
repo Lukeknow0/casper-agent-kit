@@ -1,0 +1,9 @@
+{
+  "treasuryId": "casper-testnet-demo-treasury",
+  "requestedSpendUsd": 18000,
+  "currentReserveUsd": 112000,
+  "projectedReserveUsd": 94000,
+  "riskScore": 42,
+  "counterparty": "rwa-data-provider-01",
+  "memo": "Quarterly data oracle payment"
+}
