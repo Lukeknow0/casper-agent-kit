@@ -72,28 +72,28 @@ export async function prepareGuardAction(
             action: CLValue.newCLString(decision.action),
           }),
         )
-        .payment("2500000000") // 2.5 CSPR fee
+        .payment(2500000000) // 2.5 CSPR fee
         .chainName("casper-test")
         .build();
 
       tx.sign(privateKey);
       const result = await client.putTransaction(tx);
-      txHash = result.transactionHash;
+      txHash = (result.transactionHash as any).toHex ? (result.transactionHash as any).toHex() : result.transactionHash;
     } else {
       console.log("Live mode: No contract hash configured. Falling back to self-transfer transaction proof...");
       const builder = new NativeTransferBuilder();
       const tx = builder
         .from(senderPublicKey)
         .target(senderPublicKey)
-        .amount("1000000000") // 1 CSPR in motes
+        .amount("2500000000") // 2.5 CSPR in motes
         .id(Date.now())
         .chainName("casper-test")
-        .payment("100000000") // 0.1 CSPR fee
+        .payment(100000000) // 0.1 CSPR fee
         .build();
 
       tx.sign(privateKey);
       const result = await client.putTransaction(tx);
-      txHash = result.transactionHash;
+      txHash = (result.transactionHash as any).toHex ? (result.transactionHash as any).toHex() : result.transactionHash;
     }
 
     const explorerUrl = `${config.explorerBaseUrl}/transaction/${txHash}`;

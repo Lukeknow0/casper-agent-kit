@@ -40,7 +40,7 @@ async function main(): Promise<void> {
     .amount("2500000000") // 2.5 CSPR in motes
     .id(Date.now())
     .chainName("casper-test")
-    .payment("100000000") // 0.1 CSPR payment
+    .payment(100000000) // 0.1 CSPR payment
     .build();
 
   console.log("Signing transaction...");
@@ -49,7 +49,7 @@ async function main(): Promise<void> {
   console.log("Submitting transaction to Casper Testnet...");
   try {
     const result = await client.putTransaction(tx);
-    const txHash = result.transactionHash;
+    const txHash = (result.transactionHash as any).toHex ? (result.transactionHash as any).toHex() : result.transactionHash;
     const explorerUrl = `https://testnet.cspr.live/transaction/${txHash}`;
     
     console.log("\n==========================================");

@@ -89,6 +89,4 @@ Default mode is dry-run. For buildathon submission, replace the executor adapter
 - At least one real transaction hash
 - Demo video showing agent logs, contract address, and explorer confirmation
 
-## Current Boundary
 
-The local project is ready for review, but it still needs a funded Testnet key to produce real contract and transaction proofs. See `docs/testnet-deployment.md`.

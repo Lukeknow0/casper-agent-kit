@@ -74,9 +74,9 @@ Current local implementation:
 Before final submission, fill:
 
 ```text
-Contract hash: <pending testnet deployment>
-Transaction hash: <pending testnet transaction>
-Explorer URL: <pending explorer confirmation>
+Contract hash: <None - Fallback native transfer proof selected>
+Transaction hash: 70fa356fef4d2efc040bbe48b118ec1227abf08fa463bc8e8892fb8fdffe7c62
+Explorer URL: https://testnet.cspr.live/transaction/70fa356fef4d2efc040bbe48b118ec1227abf08fa463bc8e8892fb8fdffe7c62
 ```
 
 ## Technology Stack Used
