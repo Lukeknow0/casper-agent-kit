@@ -8,3 +8,6 @@ npm-debug.log*
 demo/keys/
 *.pem
 demo/videos/
+contracts/treasury_guard/contract/target/
+contracts/treasury_guard/tests/target/
+contracts/treasury_guard/tests/wasm/

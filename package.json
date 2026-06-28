@@ -11,6 +11,8 @@
     "demo:agent": "tsx src/agent/treasury-guard.ts",
     "dashboard": "tsx src/dashboard/server.ts",
     "dashboard:vite": "vite --host 127.0.0.1 dashboard",
+    "contract:build": "make -C contracts/treasury_guard build-contract",
+    "contract:deploy": "tsx scripts/deploy-contract.ts",
     "keys:generate": "tsx scripts/generate-keys.ts",
     "keys:balance": "tsx scripts/check-balance.ts",
     "demo:transfer": "tsx scripts/send-transfer.ts"

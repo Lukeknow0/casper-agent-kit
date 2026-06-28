@@ -1,7 +1,7 @@
 # Casper Agentic Buildathon 2026 Submission Draft
 
 > Project: CasperAgentKit
-> Status: local draft only. Do not submit before user verification.
+> Status: ready for final owner review before updating DoraHacks.
 
 ## Title
 
@@ -42,6 +42,7 @@ CasperAgentKit MCP Server
   |-- casper_get_node_status
   |-- casper_get_latest_block
   |-- casper_query_global_state
+  |-- casper_get_account_balance
   |-- treasury_guard_evaluate_policy
   |-- treasury_guard_prepare_action
   |
@@ -63,24 +64,29 @@ Treasury Guard contract on Casper Testnet
 
 ## Casper Integration
 
-Current local implementation:
+Current implementation:
 
 - MCP server written in TypeScript.
 - Casper JSON-RPC client for live Testnet reads.
 - Treasury Guard agent that evaluates scenarios via LLM (e.g. OpenAI/Gemini) with a deterministic rule-engine fallback.
 - Dry-run receipt mode for safe local verification.
-- Contract API sketch for the on-chain Treasury Guard component.
+- Live execution mode that signs and submits Casper Testnet transactions.
+- Custom Rust Treasury Guard smart contract with `record_guard_action`.
+- Casper JS SDK v5 deployment/call path using Casper 2.0 Condor `installOrUpgrade`.
 
-> **Honesty Declaration on Smart Contract:**
-> Due to time constraints in this buildathon, we did not deploy a live Odra smart contract to Casper Testnet. Instead, the `executor.ts` uses a **Native Transfer Fallback**: the agent proves its capability to prepare, sign, and submit a live Casper transaction by issuing a self-transfer on the Testnet when executing a policy decision.
-
-Before final submission, fill:
+We completed an end-to-end live Casper Testnet integration: a custom Rust Treasury Guard smart contract was compiled, deployed through the Casper 2.0 Condor `installOrUpgrade` path, and called by the AI agent through the `record_guard_action` entry point. The submission includes a live contract hash and a verifiable transaction hash on Casper Testnet.
 
 ```text
-Contract hash: <Not Deployed - Native Transfer Fallback Used>
-Transaction hash: d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17
-Explorer URL: https://testnet.cspr.live/transaction/d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17
+Contract Hash:
+hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
+
+Tx Hash:
+f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
 ```
+
+Explorer Links:
+- [Contract](https://testnet.cspr.live/contract/hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9)
+- [Transaction](https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f)
 
 ## Technology Stack Used
 
@@ -89,10 +95,14 @@ Use only the items that are true at final submission time.
 Currently true:
 
 - JavaScript/TypeScript SDK
-- Casper JSON-RPC
 - MCP server implementation
+- Casper JSON-RPC
+- Rust smart contract
+- Casper contract SDK (`casper-contract` / `casper-types`)
+- Casper JS SDK v5
+- Casper 2.0 Condor `installOrUpgrade` deployment path
 
-Select only after live proof:
+Do not select unless separately demonstrated in the final video:
 
 - Odra Framework
 - CSPR.click
@@ -106,7 +116,7 @@ Do not select x402 unless the final demo includes an actual x402 interaction.
 ## GitHub Repository
 
 ```text
-https://github.com/<username>/casper-agent-kit
+https://github.com/Lukeknow0/casper-agent-kit
 ```
 
 ## Demo Video Script
@@ -126,6 +136,7 @@ Show the MCP server and the available tools:
 - `casper_get_node_status`
 - `casper_get_latest_block`
 - `casper_query_global_state`
+- `casper_get_account_balance`
 - `treasury_guard_evaluate_policy`
 - `treasury_guard_prepare_action`
 
@@ -141,11 +152,11 @@ Show the scenario, policy decision, prepared action, and generated receipt.
 
 ### 2:00 - 2:35 On-chain Proof
 
-After deployment, show:
+Show:
 
-- Casper Testnet contract hash
-- transaction hash
-- explorer confirmation
+- Casper Testnet contract hash: `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`
+- Transaction hash: `f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
+- Explorer confirmation: `https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
 
 ### 2:35 - 3:00 Long-term Value
 

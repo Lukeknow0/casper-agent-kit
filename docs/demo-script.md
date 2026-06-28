@@ -39,6 +39,17 @@ Explain the flow:
 
 Show the deployed contract address and testnet transaction hash. Open the explorer URL and confirm the transaction.
 
+```text
+Contract Hash:
+hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
+
+Transaction Hash:
+f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+
+Explorer:
+https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+```
+
 ## 2:35 - 3:00 Long-term Value
 
 CasperAgentKit is not just a demo agent. It is a reusable MCP toolkit for Casper developers building autonomous agents, treasury bots, RWA monitors, x402 services, and compliance workflows.

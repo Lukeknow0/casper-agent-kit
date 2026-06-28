@@ -14,10 +14,18 @@
 
 ## DoraHacks Technology Stack
 
-Use these only after they are true in the repo or video:
+Use these as true for the current repo/video:
 
 - JavaScript/TypeScript SDK
 - Casper MCP Server
+- Casper JSON-RPC
+- Rust smart contract
+- Casper contract SDK (`casper-contract` / `casper-types`)
+- Casper JS SDK v5
+- Casper 2.0 Condor `installOrUpgrade`
+
+Do not select these unless separately demonstrated:
+
 - CSPR.cloud
 - CSPR.click
 - Odra Framework

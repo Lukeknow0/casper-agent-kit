@@ -1,6 +1,6 @@
 # Local Verification
 
-Status: local project is written. Do not submit yet.
+Status: live Casper Testnet proof verified. Final DoraHacks update still needs owner-side form review.
 
 ## What Works Now
 
@@ -17,7 +17,9 @@ Verified locally:
 - Demo scenario is loaded from `demo/scenario.json`.
 - Policy decision is generated.
 - LLM analysis field is recorded in the receipt. Default provider is `local-rule-engine`; an OpenAI-compatible endpoint can be configured through `.env`.
-- Dry-run action receipt is written to `demo/runs/treasury-guard-latest.json`.
+- Live action receipt is written to `demo/runs/treasury-guard-latest.json` when `CASPER_DRY_RUN=false`.
+- Rust Treasury Guard contract is deployed on Casper Testnet.
+- The agent submitted a live Casper 2.0 transaction calling `record_guard_action`.
 - Dashboard API server reads the latest receipt and can trigger a fresh local agent run.
 
 ## Files To Review
@@ -41,7 +43,9 @@ Expected result:
 CasperAgentKit Treasury Guard
 Treasury: casper-testnet-demo-treasury
 Action: APPROVE_SPEND
-Mode: dry-run
+Mode: live
+Contract Hash: hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
+Transaction Hash: f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
 Receipt: .../demo/runs/treasury-guard-latest.json
 ```
 
@@ -64,13 +68,13 @@ curl http://127.0.0.1:5174/api/latest-run
 curl -X POST http://127.0.0.1:5174/api/run-agent
 ```
 
-## What Is Still Missing Before DoraHacks Submission
+## Remaining DoraHacks Submission Items
 
-- Real Casper Testnet Treasury Guard contract deployment (Skipped due to time constraints; using Native Transfer Fallback).
-- Contract hash (Using fallback).
-- *Verified:* Real transaction hash (Native Transfer Fallback: d5dca32debc9fbef56ace0a39075aa47d1826adef074623a2d0591b0a79acb17).
-- *Verified:* Explorer URL.
-- Public GitHub repository URL.
+- *Verified:* Casper Testnet Treasury Guard contract deployment.
+- *Verified:* Contract hash: `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`.
+- *Verified:* Real transaction hash: `f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`.
+- *Verified:* Explorer URL: `https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`.
+- *Verified:* Public GitHub repository URL: `https://github.com/Lukeknow0/casper-agent-kit`.
 - Clean Demo video URL (Recording in progress).
 - Optional CSPR.cloud token if you want to honestly select CSPR.cloud in the submission.
 
@@ -88,7 +92,11 @@ The current verified stack is:
 - TypeScript
 - MCP SDK
 - Casper JSON-RPC client
+- Casper JS SDK v5
+- Rust smart contract
+- Casper contract SDK (`casper-contract` / `casper-types`)
+- Casper 2.0 Condor `installOrUpgrade`
 - Optional CSPR.cloud tool path, not configured without token
 - Optional OpenAI-compatible LLM tool path, not configured without token
 - Treasury Guard policy engine
-- dry-run Casper action adapter
+- live Casper contract-call adapter with dry-run fallback

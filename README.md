@@ -19,7 +19,7 @@ src/
   agent/              Treasury Guard reference agent
   casper/             JSON-RPC client and action executor adapter
   mcp/                MCP server exposing CasperAgentKit tools
-contracts/            Treasury Guard contract sketch and deployment notes
+contracts/            Rust Treasury Guard smart contract and deployment notes
 dashboard/            Static demo dashboard for video recording
 demo/                 Scenario input and runtime receipts
 docs/                 Architecture and demo scripts
@@ -48,6 +48,12 @@ npm run dashboard
 
 The dashboard runs a local API server on `http://127.0.0.1:5174/`. It reads `demo/runs/treasury-guard-latest.json`; the Run Agent button triggers a fresh local agent run.
 
+Build the Rust Treasury Guard contract:
+
+```bash
+npm run contract:build
+```
+
 ## MCP Tools
 
 `casper_get_node_status`
@@ -74,19 +80,24 @@ The Treasury Guard Agent reads `demo/scenario.json`, evaluates policy, prepares 
 
 The receipt includes `llmAnalysis`. By default the provider is `local-rule-engine`, so the demo works without secrets. To use a real OpenAI-compatible endpoint, set `LLM_API_URL`, `LLM_API_KEY`, and `LLM_MODEL`.
 
-Default mode is dry-run. For buildathon submission, replace the executor adapter with the deployed contract call path and fill:
+## Testnet Smart Contract Integration
 
-- `CASPER_TREASURY_CONTRACT_HASH`
-- `CASPER_SECRET_KEY_PATH`
-- final transaction hashes in `submission_draft.md`
+This kit is fully integrated with a custom Treasury Guard smart contract deployed on Casper Testnet:
+
+- **Contract Hash:** `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`
+- **Explorer Contract Link:** [Contract](https://testnet.cspr.live/contract/hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9)
+- **Sample Live Agent Action Transaction:** `f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
+- **Explorer Transaction Link:** [Transaction](https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f)
+
+The agent reads risk policies, uses LLM analysis to evaluate the scenario, executes a live transaction invoking the `record_guard_action` entry point, and records the audit receipt.
+
+The smart contract is implemented in Rust with `casper-contract` / `casper-types`, compiled to `wasm32-unknown-unknown`, and deployed through the Casper JS SDK v5 `SessionBuilder().installOrUpgrade()` path for Casper 2.0 Condor.
 
 ## Buildathon Proof Checklist
 
-- Public GitHub repository
-- MCP server starts locally
-- Treasury Guard demo runs from CLI
-- Contract address on Casper Testnet
-- At least one real transaction hash
-- Demo video showing agent logs, contract address, and explorer confirmation
-
-
+- [x] Public GitHub repository: https://github.com/Lukeknow0/casper-agent-kit
+- [x] MCP server starts locally
+- [x] Treasury Guard demo runs from CLI and connects to live Casper Testnet
+- [x] Verified Contract address on Casper Testnet
+- [x] Live transaction hash recorded on Casper Testnet
+- [ ] Demo video showing agent logs, contract address, and explorer confirmation

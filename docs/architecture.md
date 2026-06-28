@@ -14,6 +14,7 @@ CasperAgentKit MCP Server
   |-- casper_get_node_status
   |-- casper_get_latest_block
   |-- casper_query_global_state
+  |-- casper_get_account_balance
   |-- treasury_guard_evaluate_policy
   |-- treasury_guard_prepare_action
   |
@@ -28,7 +29,7 @@ The demo is intentionally narrow. The agent is not a generic chatbot. It has one
 
 ## Live Transaction Path
 
-For the video and final submission, the dry-run receipt must be replaced with one explorer-confirmed transaction.
+For the video and final submission, the agent now has one explorer-confirmed Casper 2.0 transaction calling the deployed Treasury Guard contract.
 
 Required proof fields:
 
@@ -37,6 +38,14 @@ Required proof fields:
 - explorer URL;
 - CLI output or SDK response;
 - final `demo/runs/treasury-guard-latest.json`.
+
+Verified proof:
+
+```text
+Contract Hash: hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
+Transaction Hash: f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+Explorer URL: https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+```
 
 ## Why This Scores
 
