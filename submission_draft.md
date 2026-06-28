@@ -81,12 +81,12 @@ Contract Hash:
 hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
 
 Tx Hash:
-f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b
 ```
 
 Explorer Links:
 - [Contract](https://testnet.cspr.live/contract/hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9)
-- [Transaction](https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f)
+- [Transaction](https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b)
 
 ## Technology Stack Used
 
@@ -102,21 +102,16 @@ Currently true:
 - Casper JS SDK v5
 - Casper 2.0 Condor `installOrUpgrade` deployment path
 
-Do not select unless separately demonstrated in the final video:
-
-- Odra Framework
-- CSPR.click
-- CSPR.cloud
-- CSPR.click AI Agent Skill
-- CSPR.cloud AI Agent Skill
-- x402 Facilitator
-
-Do not select x402 unless the final demo includes an actual x402 interaction.
-
 ## GitHub Repository
 
 ```text
 https://github.com/Lukeknow0/casper-agent-kit
+```
+
+## Demo Video
+
+```text
+https://github.com/Lukeknow0/casper-agent-kit/releases/download/live-demo-2026-06-28/casperagentkit-live-demo.mp4
 ```
 
 ## Demo Video Script
@@ -155,12 +150,12 @@ Show the scenario, policy decision, prepared action, and generated receipt.
 Show:
 
 - Casper Testnet contract hash: `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`
-- Transaction hash: `f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
-- Explorer confirmation: `https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
+- Transaction hash: `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
+- Explorer confirmation: `https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
 
 ### 2:35 - 3:00 Long-term Value
 
-CasperAgentKit is reusable infrastructure for Casper agents. Treasury Guard is one reference agent; the same MCP toolkit can support RWA monitors, x402 service agents, DeFi operators, and compliance workflows.
+CasperAgentKit is reusable infrastructure for Casper agents. Treasury Guard is one reference agent; the same MCP toolkit can support RWA monitors, treasury automation, DeFi operators, payment agents, and compliance workflows.
 
 ## Long-Term Launch Plan
 
@@ -174,7 +169,7 @@ Phase 2:
 
 - Add CSPR.cloud and CSPR.click adapters.
 - Expand contract tools and transaction templates.
-- Add x402 payment tools after a working payment demo is available.
+- Add payment-agent tools after a working payment demo is available.
 
 Phase 3:
 

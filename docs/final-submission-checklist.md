@@ -1,16 +1,16 @@
 # Final Submission Checklist
 
-- [ ] Public GitHub repository URL
-- [ ] Demo video URL
-- [ ] Casper Testnet contract hash
-- [ ] At least one explorer-confirmed transaction hash
+- [x] Public GitHub repository URL
+- [x] Demo video URL
+- [x] Casper Testnet contract hash
+- [x] At least one explorer-confirmed transaction hash
 - [ ] README quick start verified on a clean checkout
-- [ ] `npm run build` passes
-- [ ] `npm run demo:agent` writes a receipt
-- [ ] Dashboard loads for video recording
-- [ ] DoraHacks technology stack fields selected only for tools actually used
-- [ ] LLM reasoning appears in `demo/runs/treasury-guard-latest.json`
-- [ ] CSPR.cloud token configured if CSPR.cloud is selected
+- [x] `npm run build` passes
+- [x] `npm run demo:agent` writes a receipt
+- [x] Dashboard loads for video recording
+- [x] DoraHacks technology stack fields selected only for tools actually used
+- [x] LLM reasoning appears in `demo/runs/treasury-guard-latest.json`
+- [x] CSPR.cloud left unselected unless a token-backed demo is shown
 
 ## DoraHacks Technology Stack
 

@@ -67,8 +67,8 @@ Contract hash:
 hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
 
 Agent action transaction hash:
-f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b
 
 Explorer URL:
-https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f
+https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b
 ```

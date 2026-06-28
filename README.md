@@ -86,8 +86,9 @@ This kit is fully integrated with a custom Treasury Guard smart contract deploye
 
 - **Contract Hash:** `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`
 - **Explorer Contract Link:** [Contract](https://testnet.cspr.live/contract/hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9)
-- **Sample Live Agent Action Transaction:** `f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f`
-- **Explorer Transaction Link:** [Transaction](https://testnet.cspr.live/transaction/f790cbf4210f525c393df2e3d98e64d436c5337314bab8e14e08d7a80e961b9f)
+- **Sample Live Agent Action Transaction:** `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
+- **Explorer Transaction Link:** [Transaction](https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b)
+- **Demo Video:** [CasperAgentKit live demo](https://github.com/Lukeknow0/casper-agent-kit/releases/download/live-demo-2026-06-28/casperagentkit-live-demo.mp4)
 
 The agent reads risk policies, uses LLM analysis to evaluate the scenario, executes a live transaction invoking the `record_guard_action` entry point, and records the audit receipt.
 
@@ -100,4 +101,4 @@ The smart contract is implemented in Rust with `casper-contract` / `casper-types
 - [x] Treasury Guard demo runs from CLI and connects to live Casper Testnet
 - [x] Verified Contract address on Casper Testnet
 - [x] Live transaction hash recorded on Casper Testnet
-- [ ] Demo video showing agent logs, contract address, and explorer confirmation
+- [x] Demo video showing agent logs, contract address, and explorer confirmation
