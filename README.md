@@ -1,5 +1,7 @@
 # CasperAgentKit
 
+[![CI](https://github.com/Lukeknow0/casper-agent-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/Lukeknow0/casper-agent-kit/actions/workflows/ci.yml)
+
 MCP-native toolkit for building autonomous Casper agents, with a working Treasury Guard reference agent.
 
 CasperAgentKit gives an AI host a standard Model Context Protocol interface for Casper operations: read node state, inspect blocks, query global state, evaluate treasury policy, and prepare an on-chain guard action. The reference demo shows the full agent loop: perceive, decide, prepare action, and verify the receipt.
