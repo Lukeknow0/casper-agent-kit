@@ -109,7 +109,7 @@ server.registerTool(
       decision,
       {
         rpcUrl: config.rpcUrl,
-        contractHash: config.treasuryContractHash ?? "not-deployed-yet",
+        contractHash: config.treasuryContractHash ?? "not-configured",
       },
     );
     const receipt = await prepareGuardAction(

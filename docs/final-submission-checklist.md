@@ -24,10 +24,7 @@ Use these as true for the current repo/video:
 - Casper JS SDK v5
 - Casper 2.0 Condor `installOrUpgrade`
 
-Do not select these unless separately demonstrated:
+Kept out of the final DoraHacks technology selections unless separately demonstrated:
 
 - CSPR.cloud
 - CSPR.click
-- Odra Framework
-
-Do not select x402 unless an actual x402 call is demonstrated.

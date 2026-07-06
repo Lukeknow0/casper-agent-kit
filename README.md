@@ -12,6 +12,12 @@ The submission story is:
 
 > CasperAgentKit is an MCP-native toolkit that lets AI agents read Casper state, make decisions, and execute verified testnet transactions. We demonstrate it with a Treasury Guard Agent that autonomously enforces DeFi treasury policies on Casper Testnet.
 
+## Alignment with Casper AI Toolkit
+
+CasperAgentKit follows the Casper AI Toolkit direction by exposing Casper through MCP-native tools, enabling agents to query Casper state, and proving agent-driven smart contract execution with a live Testnet transaction.
+
+It is intentionally scoped to the strongest demonstrated path: MCP tools, Casper JSON-RPC reads, a Treasury Guard agent, and a deployed Rust smart contract call on Casper Testnet.
+
 ## Project Structure
 
 ```text
@@ -32,6 +38,18 @@ npm install
 cp .env.example .env
 npm run build
 npm run demo:agent
+```
+
+Verify the public on-chain proof:
+
+```bash
+npm run verify:proof
+```
+
+Smoke-test the MCP tool surface in safe dry-run mode:
+
+```bash
+npm run mcp:smoke
 ```
 
 Start the MCP server:
@@ -93,6 +111,24 @@ This kit is fully integrated with a custom Treasury Guard smart contract deploye
 The agent reads risk policies, uses LLM analysis to evaluate the scenario, executes a live transaction invoking the `record_guard_action` entry point, and records the audit receipt.
 
 The smart contract is implemented in Rust with `casper-contract` / `casper-types`, compiled to `wasm32-unknown-unknown`, and deployed through the Casper JS SDK v5 `SessionBuilder().installOrUpgrade()` path for Casper 2.0 Condor.
+
+## Judge Verification in 60 Seconds
+
+1. Open the live transaction:
+   [https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b](https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b)
+2. Confirm the explorer shows:
+   - action: `record_guard_action`
+   - status: success
+   - Casper Testnet transaction hash: `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
+3. Run the automated proof check:
+   ```bash
+   npm install
+   npm run verify:proof
+   ```
+4. Confirm the MCP tool surface:
+   ```bash
+   npm run mcp:smoke
+   ```
 
 ## Buildathon Proof Checklist
 

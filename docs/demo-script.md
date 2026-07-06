@@ -52,4 +52,4 @@ https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d
 
 ## 2:35 - 3:00 Long-term Value
 
-CasperAgentKit is not just a demo agent. It is a reusable MCP toolkit for Casper developers building autonomous agents, treasury bots, RWA monitors, x402 services, and compliance workflows.
+CasperAgentKit is not just a demo agent. It is a reusable MCP toolkit for Casper developers building autonomous agents, treasury bots, RWA monitors, payment agents, and compliance workflows.

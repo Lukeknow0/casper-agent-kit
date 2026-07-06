@@ -8,14 +8,17 @@
     "build": "tsc -p tsconfig.json",
     "check": "tsc --noEmit",
     "dev:mcp": "tsx src/mcp/server.ts",
+    "mcp:smoke": "tsx scripts/mcp-smoke-test.ts",
     "demo:agent": "tsx src/agent/treasury-guard.ts",
+    "verify:proof": "tsx scripts/verify-proof.ts",
     "dashboard": "tsx src/dashboard/server.ts",
     "dashboard:vite": "vite --host 127.0.0.1 dashboard",
     "contract:build": "make -C contracts/treasury_guard build-contract",
     "contract:deploy": "tsx scripts/deploy-contract.ts",
     "keys:generate": "tsx scripts/generate-keys.ts",
     "keys:balance": "tsx scripts/check-balance.ts",
-    "demo:transfer": "tsx scripts/send-transfer.ts"
+    "demo:transfer": "tsx scripts/send-transfer.ts",
+    "ci": "npm run build && npm run check && npm run contract:build && npm run verify:proof && npm run mcp:smoke"
   },
   "keywords": [
     "casper",

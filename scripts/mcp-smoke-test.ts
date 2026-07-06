@@ -9,6 +9,13 @@ async function runTest() {
   console.log("Starting MCP server as a child process...");
   const child = spawn("npx", ["tsx", serverPath], {
     stdio: ["pipe", "pipe", "inherit"],
+    env: {
+      ...process.env,
+      // The smoke test validates the MCP tool contract. Keep it read-only/dry-run
+      // even when the local developer .env is configured for live signing.
+      CASPER_DRY_RUN: "true",
+      CASPER_SECRET_KEY_PATH: "",
+    },
   });
 
   let output = "";
