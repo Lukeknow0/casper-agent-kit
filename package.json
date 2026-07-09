@@ -18,11 +18,20 @@
     "keys:generate": "tsx scripts/generate-keys.ts",
     "keys:balance": "tsx scripts/check-balance.ts",
     "demo:transfer": "tsx scripts/send-transfer.ts",
-    "ci": "npm run build && npm run check && npm run contract:build && npm run verify:proof && npm run mcp:smoke"
+    "ci": "npm run build && npm run check && npm run contract:build && npm run verify:proof && npm run mcp:smoke && npm run audit:high",
+    "audit:high": "npm audit --audit-level=high --registry=https://registry.npmjs.org"
   },
   "keywords": [
+    "casper-blockchain",
+    "casper-network",
+    "buildathon",
     "casper",
     "mcp",
+    "ai-agent",
+    "web3",
+    "defi",
+    "typescript",
+    "rust",
     "agentic-ai",
     "treasury",
     "dorahacks"
@@ -40,5 +49,6 @@
     "tsx": "^4.20.5",
     "typescript": "^5.9.3",
     "vite": "^7.0.0"
-  }
+  },
+  "homepage": "https://dorahacks.io/buidl/46036/"
 }

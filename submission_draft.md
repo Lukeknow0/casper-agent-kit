@@ -80,6 +80,9 @@ We completed an end-to-end live Casper Testnet integration: a custom Rust Treasu
 Contract Hash:
 hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9
 
+Contract Package Hash:
+contract-package-a7675037d99636d6303ab4d1c0d2c405010f8c0afef4f60542c08b27f56fcc57
+
 Tx Hash:
 474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b
 ```

@@ -105,6 +105,7 @@ The receipt includes `llmAnalysis`. By default the provider is `local-rule-engin
 This kit is fully integrated with a custom Treasury Guard smart contract deployed on Casper Testnet:
 
 - **Contract Hash:** `hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9`
+- **Contract Package Hash:** `contract-package-a7675037d99636d6303ab4d1c0d2c405010f8c0afef4f60542c08b27f56fcc57`
 - **Explorer Contract Link:** [Contract](https://testnet.cspr.live/contract/hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9)
 - **Sample Live Agent Action Transaction:** `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
 - **Explorer Transaction Link:** [Transaction](https://testnet.cspr.live/transaction/474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b)
@@ -121,6 +122,7 @@ The smart contract is implemented in Rust with `casper-contract` / `casper-types
 2. Confirm the explorer shows:
    - action: `record_guard_action`
    - status: success
+   - contract package hash: `contract-package-a7675037d99636d6303ab4d1c0d2c405010f8c0afef4f60542c08b27f56fcc57`
    - Casper Testnet transaction hash: `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
 3. Run the automated proof check:
    ```bash
@@ -138,5 +140,7 @@ The smart contract is implemented in Rust with `casper-contract` / `casper-types
 - [x] MCP server starts locally
 - [x] Treasury Guard demo runs from CLI and connects to live Casper Testnet
 - [x] Verified Contract address on Casper Testnet
+- [x] Verified Contract Package hash on Casper Testnet
 - [x] Live transaction hash recorded on Casper Testnet
 - [x] Demo video showing agent logs, contract address, and explorer confirmation
+- [x] GitHub Actions CI, CodeQL workflow, Dependabot config, LICENSE, and SECURITY policy

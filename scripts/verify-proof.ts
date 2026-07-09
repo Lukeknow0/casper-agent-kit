@@ -1,6 +1,8 @@
 const DEFAULT_RPC_URL = "https://node.testnet.casper.network/rpc";
 const DEFAULT_CONTRACT_HASH =
   "hash-e575218360dd4bac37c7bc07eefbdc18fc127a97a52f47bf2e184011adbb9fa9";
+const DEFAULT_CONTRACT_PACKAGE_HASH =
+  "contract-package-a7675037d99636d6303ab4d1c0d2c405010f8c0afef4f60542c08b27f56fcc57";
 const DEFAULT_TRANSACTION_HASH =
   "474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b";
 const EXPECTED_CHAIN_NAME = "casper-test";
@@ -11,6 +13,9 @@ const EXPECTED_ACTION = "APPROVE_SPEND";
 const rpcUrl = process.env.CASPER_RPC_URL || DEFAULT_RPC_URL;
 const contractHash =
   process.env.CASPER_TREASURY_CONTRACT_HASH || DEFAULT_CONTRACT_HASH;
+const contractPackageHash =
+  process.env.CASPER_TREASURY_CONTRACT_PACKAGE_HASH ||
+  DEFAULT_CONTRACT_PACKAGE_HASH;
 const transactionHash =
   process.env.CASPER_PROOF_TRANSACTION_HASH || DEFAULT_TRANSACTION_HASH;
 const cleanContractHash = contractHash.replace(/^hash-/, "");
@@ -19,6 +24,7 @@ async function main() {
   console.log("CasperAgentKit proof verification");
   console.log(`RPC: ${rpcUrl}`);
   console.log(`Contract: ${contractHash}`);
+  console.log(`Contract Package: ${contractPackageHash}`);
   console.log(`Transaction: ${transactionHash}`);
 
   const txResponse = await rpc("info_get_transaction", {
@@ -67,6 +73,10 @@ async function main() {
   });
   const contract = contractResponse.result?.stored_value?.Contract;
   assert(contract, "contract exists in global state");
+  assert(
+    contract.contract_package_hash === contractPackageHash,
+    "contract package hash matches",
+  );
   const entryPointNames = (contract.entry_points ?? []).map(
     (entryPoint: { name?: string }) => entryPoint.name,
   );
