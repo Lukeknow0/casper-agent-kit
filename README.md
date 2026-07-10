@@ -35,8 +35,12 @@ docs/                 Architecture and demo scripts
 
 ## Quick Start
 
+Prerequisites: Node.js 22, npm, and Git. Rust is only required to rebuild the
+smart contract; install the `wasm32-unknown-unknown` target before running the
+contract build.
+
 ```bash
-npm install
+npm ci
 cp .env.example .env
 npm run build
 npm run demo:agent
@@ -100,6 +104,11 @@ The Treasury Guard Agent reads `demo/scenario.json`, evaluates policy, prepares 
 
 The receipt includes `llmAnalysis`. By default the provider is `local-rule-engine`, so the demo works without secrets. To use a real OpenAI-compatible endpoint, set `LLM_API_URL`, `LLM_API_KEY`, and `LLM_MODEL`.
 
+The default path is dry-run and does not read a wallet key. Live Testnet writes
+require a local `CASPER_SECRET_KEY_PATH`, `CASPER_DRY_RUN=false`, and the explicit
+`CASPER_CONFIRM_TESTNET_WRITE=I_UNDERSTAND_TESTNET_WRITE` acknowledgement. Review
+the contract, account, action, chain, and fee before enabling it.
+
 ## Testnet Smart Contract Integration
 
 This kit is fully integrated with a custom Treasury Guard smart contract deployed on Casper Testnet:
@@ -126,7 +135,7 @@ The smart contract is implemented in Rust with `casper-contract` / `casper-types
    - Casper Testnet transaction hash: `474c06c9e047ff1b629c0f4218df1ee2a156a98f8d38c5a6c926fc82cf063e4b`
 3. Run the automated proof check:
    ```bash
-   npm install
+   npm ci
    npm run verify:proof
    ```
 4. Confirm the MCP tool surface:
@@ -144,3 +153,5 @@ The smart contract is implemented in Rust with `casper-contract` / `casper-types
 - [x] Live transaction hash recorded on Casper Testnet
 - [x] Demo video showing agent logs, contract address, and explorer confirmation
 - [x] GitHub Actions CI, CodeQL workflow, Dependabot config, LICENSE, and SECURITY policy
+
+For the complete no-wallet judge path, see [Judge Verification Playbook](docs/judge-verification.md).

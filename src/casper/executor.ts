@@ -46,6 +46,12 @@ export async function prepareGuardAction(
     };
   }
 
+  if (!config.confirmTestnetWrite) {
+    throw new Error(
+      "Live execution blocked. Set CASPER_CONFIRM_TESTNET_WRITE=I_UNDERSTAND_TESTNET_WRITE after reviewing the transaction settings.",
+    );
+  }
+
   try {
     const pemStr = await readFile(config.secretKeyPath, "utf8");
     const privateKey = PrivateKey.fromPem(pemStr, KeyAlgorithm.ED25519);

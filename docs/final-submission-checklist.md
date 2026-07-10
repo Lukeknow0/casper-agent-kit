@@ -4,7 +4,7 @@
 - [x] Demo video URL
 - [x] Casper Testnet contract hash
 - [x] At least one explorer-confirmed transaction hash
-- [ ] README quick start verified on a clean checkout
+- [x] README quick start verified on a clean checkout
 - [x] `npm run build` passes
 - [x] `npm run demo:agent` writes a receipt
 - [x] Dashboard loads for video recording

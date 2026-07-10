@@ -14,13 +14,23 @@ const {
 } = realSdk;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const privateKeyPath = resolve(__dirname, "../demo/keys/secret_key.pem");
 const wasmPath = resolve(
   __dirname,
   "../contracts/treasury_guard/contract/target/wasm32-unknown-unknown/release/contract.wasm"
 );
 
 async function main() {
+  if (!process.argv.includes("--confirm-testnet-deploy")) {
+    throw new Error(
+      "Deployment blocked. Re-run with --confirm-testnet-deploy after reviewing the contract, account, chain, and payment amount.",
+    );
+  }
+
+  const privateKeyPath = process.env.CASPER_SECRET_KEY_PATH;
+  if (!privateKeyPath) {
+    throw new Error("CASPER_SECRET_KEY_PATH must point to a local Testnet key.");
+  }
+
   const privateKeyPem = await readFile(privateKeyPath, "utf8");
   const privateKey = PrivateKey.fromPem(privateKeyPem, KeyAlgorithm.ED25519);
   const senderPublicKey = privateKey.publicKey;

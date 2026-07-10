@@ -25,6 +25,7 @@ Fill:
 CASPER_DRY_RUN=false
 CASPER_SECRET_KEY_PATH=/absolute/path/to/secret_key.pem
 CASPER_TREASURY_CONTRACT_HASH=hash-...
+CASPER_CONFIRM_TESTNET_WRITE=I_UNDERSTAND_TESTNET_WRITE
 ```
 
 ## Implemented Path: Rust Contract + Casper JS SDK v5
@@ -46,10 +47,14 @@ npm run contract:build
 Deploy:
 
 ```bash
-npm run contract:deploy
+CASPER_SECRET_KEY_PATH=/absolute/path/to/secret_key.pem \
+  npm run contract:deploy -- --confirm-testnet-deploy
 ```
 
-The deploy script signs with the local testnet key and submits an `installOrUpgrade` transaction. Do not run it again unless intentionally deploying a new contract version.
+The deploy script refuses to read a key or sign unless the explicit confirmation
+flag is present. It then signs with the configured local Testnet key and submits
+an `installOrUpgrade` transaction. Do not run it again unless intentionally
+deploying a new contract version.
 
 ## Final Proof Fields
 
@@ -57,7 +62,7 @@ Update:
 
 - `README.md`
 - `submission_draft.md`
-- `local_verification.md`
+- `docs/judge-verification.md`
 - `demo/runs/treasury-guard-latest.json`
 
 Required values:
