@@ -1,7 +1,7 @@
 # Casper Agentic Buildathon 2026 Submission Draft
 
 > Project: CasperAgentKit
-> Status: ready for final owner review before updating DoraHacks.
+> Status: submitted and under qualification review. Final-round resubmission is invite-only.
 
 ## Title
 

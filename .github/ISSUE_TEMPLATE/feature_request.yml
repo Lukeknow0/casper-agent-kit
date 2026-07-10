@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose a focused improvement to CasperAgentKit
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What agent or Casper workflow needs improvement?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest useful change and its expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: Verification approach
+      description: Explain how the change can be tested without exposing secrets.
+    validations:
+      required: true

@@ -1,33 +1,25 @@
 import { readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import * as sdk from "casper-js-sdk";
 
 const realSdk = (sdk as any).default || sdk;
-const { RpcClient, HttpHandler, PrivateKey, PublicKey, NativeTransferBuilder, KeyAlgorithm } = realSdk;
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const privateKeyPath = resolve(__dirname, "../demo/keys/secret_key.pem");
-const publicKeyPath = resolve(__dirname, "../demo/keys/public_key.pem");
+const { RpcClient, HttpHandler, PrivateKey, NativeTransferBuilder, KeyAlgorithm } = realSdk;
 
 async function main(): Promise<void> {
-  let privateKeyPem = "";
-  let publicKeyHex = "";
-  
-  try {
-    privateKeyPem = await readFile(privateKeyPath, "utf8");
-    const pubKeyPem = await readFile(publicKeyPath, "utf8");
-    const pubKey = PublicKey.fromPem(pubKeyPem, KeyAlgorithm.ED25519);
-    publicKeyHex = pubKey.toHex();
-  } catch (err) {
-    console.error("❌ Failed to read generated keys. Run 'npm run keys:generate' first.");
-    process.exitCode = 1;
-    return;
+  if (!process.argv.includes("--confirm-testnet-transfer")) {
+    throw new Error(
+      "Transfer blocked. Re-run with --confirm-testnet-transfer after reviewing the account, chain, amount, and fee.",
+    );
   }
 
-  console.log("Loading private key...");
+  const privateKeyPath = process.env.CASPER_SECRET_KEY_PATH;
+  if (!privateKeyPath) {
+    throw new Error("CASPER_SECRET_KEY_PATH must point to a local Testnet key.");
+  }
+
+  const privateKeyPem = await readFile(privateKeyPath, "utf8");
   const privateKey = PrivateKey.fromPem(privateKeyPem, KeyAlgorithm.ED25519);
-  const senderPublicKey = PublicKey.fromHex(publicKeyHex);
+  const senderPublicKey = privateKey.publicKey;
+  const publicKeyHex = senderPublicKey.toHex();
 
   console.log(`Preparing transfer of 2.5 CSPR from and to: ${publicKeyHex}`);
   

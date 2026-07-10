@@ -9,6 +9,8 @@ const EXPECTED_CHAIN_NAME = "casper-test";
 const EXPECTED_ENTRY_POINT = "record_guard_action";
 const EXPECTED_TREASURY_ID = "casper-testnet-demo-treasury";
 const EXPECTED_ACTION = "APPROVE_SPEND";
+const MAX_RPC_ATTEMPTS = 3;
+const RPC_TIMEOUT_MS = 20_000;
 
 const rpcUrl = process.env.CASPER_RPC_URL || DEFAULT_RPC_URL;
 const contractHash =
@@ -89,10 +91,35 @@ async function main() {
 }
 
 async function rpc(method: string, params: unknown) {
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= MAX_RPC_ATTEMPTS; attempt += 1) {
+    try {
+      return await rpcOnce(method, params);
+    } catch (error: unknown) {
+      lastError = error;
+      if (attempt === MAX_RPC_ATTEMPTS) {
+        break;
+      }
+
+      console.warn(
+        `${method} attempt ${attempt} failed; retrying public Testnet RPC...`,
+      );
+      await delay(attempt * 1_000);
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error(`${method} failed after ${MAX_RPC_ATTEMPTS} attempts`);
+}
+
+async function rpcOnce(method: string, params: unknown) {
   const response = await fetch(rpcUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ jsonrpc: "2.0", id: method, method, params }),
+    signal: AbortSignal.timeout(RPC_TIMEOUT_MS),
   });
 
   if (!response.ok) {
@@ -104,6 +131,10 @@ async function rpc(method: string, params: unknown) {
     throw new Error(`${method} RPC error: ${JSON.stringify(payload.error)}`);
   }
   return payload;
+}
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 function assert(condition: unknown, message: string): asserts condition {

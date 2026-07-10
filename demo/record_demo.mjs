@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 
 const DASHBOARD_URL = process.env.DASHBOARD_URL || 'http://127.0.0.1:5174/';
 const TARGET_WIDTH = Number(process.env.VIDEO_WIDTH || 1280);
@@ -102,10 +102,38 @@ const dashboardMp4 = path.resolve('demo/videos/dashboard.mp4');
 const explorerMp4 = path.resolve('demo/videos/explorer.mp4');
 const concatList = path.resolve('demo/videos/concat.txt');
 try {
-  execSync(`ffmpeg -y -i ${JSON.stringify(source)} -vf "scale=${TARGET_WIDTH}:${TARGET_HEIGHT}:force_original_aspect_ratio=decrease,pad=${TARGET_WIDTH}:${TARGET_HEIGHT}:(ow-iw)/2:(oh-ih)/2" -r 30 -c:v libx264 -preset fast -crf 23 -an ${JSON.stringify(dashboardMp4)}`, { stdio: 'inherit' });
-  execSync(`ffmpeg -y -loop 1 -t ${EXPLORER_SECONDS + FINAL_SECONDS} -i demo/videos/explorer-loaded.png -vf "scale=${TARGET_WIDTH}:${TARGET_HEIGHT}:force_original_aspect_ratio=decrease,pad=${TARGET_WIDTH}:${TARGET_HEIGHT}:(ow-iw)/2:(oh-ih)/2,format=yuv420p" -r 30 -c:v libx264 -preset fast -crf 23 -an ${JSON.stringify(explorerMp4)}`, { stdio: 'inherit' });
+  execFileSync('ffmpeg', [
+    '-y',
+    '-i', source,
+    '-vf', `scale=${TARGET_WIDTH}:${TARGET_HEIGHT}:force_original_aspect_ratio=decrease,pad=${TARGET_WIDTH}:${TARGET_HEIGHT}:(ow-iw)/2:(oh-ih)/2`,
+    '-r', '30',
+    '-c:v', 'libx264',
+    '-preset', 'fast',
+    '-crf', '23',
+    '-an', dashboardMp4,
+  ], { stdio: 'inherit' });
+  execFileSync('ffmpeg', [
+    '-y',
+    '-loop', '1',
+    '-t', String(EXPLORER_SECONDS + FINAL_SECONDS),
+    '-i', 'demo/videos/explorer-loaded.png',
+    '-vf', `scale=${TARGET_WIDTH}:${TARGET_HEIGHT}:force_original_aspect_ratio=decrease,pad=${TARGET_WIDTH}:${TARGET_HEIGHT}:(ow-iw)/2:(oh-ih)/2,format=yuv420p`,
+    '-r', '30',
+    '-c:v', 'libx264',
+    '-preset', 'fast',
+    '-crf', '23',
+    '-an', explorerMp4,
+  ], { stdio: 'inherit' });
   await fs.writeFile(concatList, `file '${dashboardMp4}'\nfile '${explorerMp4}'\n`);
-  execSync(`ffmpeg -y -f concat -safe 0 -i ${JSON.stringify(concatList)} -c copy -movflags +faststart ${JSON.stringify(outputPath)}`, { stdio: 'inherit' });
+  execFileSync('ffmpeg', [
+    '-y',
+    '-f', 'concat',
+    '-safe', '0',
+    '-i', concatList,
+    '-c', 'copy',
+    '-movflags', '+faststart',
+    outputPath,
+  ], { stdio: 'inherit' });
 } catch {
   await fs.copyFile(source, outputPath);
   console.warn('ffmpeg conversion failed; saved raw WebM as demo_recording.mp4');

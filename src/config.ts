@@ -5,6 +5,7 @@ export interface AppConfig {
   explorerBaseUrl: string;
   treasuryContractHash?: string;
   dryRun: boolean;
+  confirmTestnetWrite: boolean;
   casperClientBin: string;
   secretKeyPath?: string;
   csprCloudApiUrl: string;
@@ -25,6 +26,9 @@ export function loadConfig(): AppConfig {
       process.env.CASPER_TREASURY_CONTRACT_HASH,
     ),
     dryRun: process.env.CASPER_DRY_RUN !== "false",
+    confirmTestnetWrite:
+      process.env.CASPER_CONFIRM_TESTNET_WRITE ===
+      "I_UNDERSTAND_TESTNET_WRITE",
     casperClientBin: process.env.CASPER_CLIENT_BIN || "casper-client",
     secretKeyPath: emptyToUndefined(process.env.CASPER_SECRET_KEY_PATH),
     csprCloudApiUrl:

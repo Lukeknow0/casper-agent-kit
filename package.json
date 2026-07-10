@@ -6,7 +6,7 @@
   "description": "MCP-native toolkit for building autonomous Casper agents, with a Treasury Guard demo.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "check": "tsc --noEmit",
+    "check": "tsc -p tsconfig.check.json",
     "dev:mcp": "tsx src/mcp/server.ts",
     "mcp:smoke": "tsx scripts/mcp-smoke-test.ts",
     "demo:agent": "tsx src/agent/treasury-guard.ts",
